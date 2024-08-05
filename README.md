@@ -63,7 +63,7 @@ The Modular Blog System is a PHP-based application designed to demonstrate the u
 
 3. composer install
 
-  ## composer install
+   ## composer install
 
 4. Running the Application
   Open the index.php file in your web server or run it via CLI:
