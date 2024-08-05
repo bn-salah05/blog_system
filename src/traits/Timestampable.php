@@ -1,27 +1,25 @@
 <?php
 
-namespace src\traits;
+namespace BlogSystem\Traits;
 
 trait Timestampable {
 
-    protected Timestampable $CreatedAt;
-    protected Timestampable $UpdatedAt;
+    private $createdAt;
+    private $updatedAt;
 
-    public function getCreatedAt(): Timestampable {
-        return $this->CreatedAt;
+    public function setCreatedAt($dateTime) {
+        $this->createdAt = $dateTime;
     }
 
-    public function setCreatedAt(): void {
-        $this->CreatedAt = date("Y-m-d H:mn:s");
+    public function getCreatedAt() {
+        return $this->createdAt;
     }
 
-    public function getUpdatedAt(): Timestampable {
-        return $this->UpdatedAt;
+    public function setUpdatedAt($dateTime) {
+        $this->updatedAt = $dateTime;
     }
 
-    public function setUpdatedAt(): void {
-        $this->UpdatedAt = date("Y-m-d H:mn:s");
+    public function getUpdatedAt() {
+        return $this->updatedAt;
     }
 }
-
-?>

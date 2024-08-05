@@ -1,19 +1,16 @@
-<?php 
+<?php
 
-namespace src\traits;
+namespace BlogSystem\Traits;
 
 trait Serializable {
-
-    public function serialize(mixed $object): string {
-        $serialized = serialize($object);
-        return $serialized;
-    } 
-
-    public function unserialize(string $string): mixed {
-        $unserialized = unserialize($string);
-        return $unserialized;
+    public function serialize() {
+        return serialize($this);
     }
 
+    public function unserialize($data) {
+        $obj = unserialize($data);
+        foreach (get_object_vars($obj) as $property => $value) {
+            $this->$property = $value;
+        }
+    }
 }
-
-?>

@@ -1,29 +1,29 @@
 <?php
 
-namespace src\classes;
+namespace BlogSystem\Classes;
 
-use src\traits\Publishable;
-use src\traits\Loggable;
-use src\traits\Timestampable;
-use src\traits\Serializable;
-use src\traits\Taggable;
+use BlogSystem\Traits\Loggable;
+use BlogSystem\Traits\Timestampable;
+use BlogSystem\Traits\Serializable;
+use BlogSystem\Traits\Taggable;
+use BlogSystem\Interfaces\Publishable;
 
 class BlogPost implements Publishable {
+    use Loggable, Timestampable, Serializable, Taggable;
 
-    use Publishable, Loggable, Timestampable, Serializable, Taggable;
+    public function getLogName() {
+        return "BlogPost";
+    }
 
-    private int $id;
-    private string $title;
-    private string $content;
-    private $author;
-    private ?\DateTime $publishedAt;
-    private ?\DateTime $updatedAt;
+    public function publish() {
+        $this->log("Blog post published.");
+    }
 
-    public function getLogName("BlogPost"): string {
-        return $this->getLogName("BlogPost");
+    public function unpublish() {
+        $this->log("Blog post unpublished.");
+    }
+
+    public function __toString() {
+        return "BlogPost with tags: " . implode(', ', $this->getTags());
     }
 }
-
-
-
-?>

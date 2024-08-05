@@ -1,13 +1,9 @@
-<?php 
+<?php
 
-namespace src\traits;
+namespace BlogSystem\Interfaces;
 
 interface Publishable {
     
-    public function publish(): void;
-
-    public function unpublish(): void;
-
+    public function publish();
+    public function unpublish();
 }
-
-?>

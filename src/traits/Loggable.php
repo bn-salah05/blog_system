@@ -1,22 +1,14 @@
 <?php
 
-namespace src\traits;
-
-use src\traits\Timestampable;
+namespace BlogSystem\Traits;
 
 trait Loggable {
-    
-    use Timestampable {
-        Timestampable::setCreatedAt as setCreatedAt;
-    }
 
-    public function log (string $message): string {
+    abstract public function getLogName();
+
+    public function log($message) {
         $logName = $this->getLogName();
-        $timestamp = $this->setCreatedAt();
-        return "$timestamp - $logName : $message";
+        $timestamp = date('Y-m-d H:i:s');
+        echo "[$timestamp] [$logName] $message\n";
     }
-
-    abstract function getLogName(): string;
 }
-
-?>

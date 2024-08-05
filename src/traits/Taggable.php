@@ -1,27 +1,21 @@
-<?php 
+<?php
 
-namespace src\traits;
+namespace BlogSystem\Traits;
 
 trait Taggable {
-    protected array $tags = [];
+    private $tags = [];
 
-    public function addTag (mixed ...$tagslist): void {
-        foreach ($tagslist as $tag){
-            $this->tags[] = $tag;
-        }
+    public function addTag($tag) {
+        $this->tags[] = $tag;
     }
 
-    public function removeTag (string $tag): void {
-        if (in_array($tag, $this->tags)) {
-            $key = array_search($tag, $this->tags);
-            unset($this->tags[$key]);
-        }
+    public function removeTag($tag) {
+        $this->tags = array_filter($this->tags, function($t) use ($tag) {
+            return $t !== $tag;
+        });
     }
 
-    public function getTags (): array {
+    public function getTags() {
         return $this->tags;
     }
 }
-
-
-?>
